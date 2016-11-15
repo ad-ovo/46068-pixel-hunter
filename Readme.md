@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Ольга Вадясова](https://up.htmlacademy.ru/ecmascript/1/user/46068).
-* Наставник: `Неизвестно`.
+* Наставник: [Владимир Андреев](https://htmlacademy.ru/profile/id298005).
 
 ---
 
