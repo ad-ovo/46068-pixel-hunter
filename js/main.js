@@ -1,17 +1,17 @@
-(function () {
+(() => {
 
-  let loadTemplate = (templateName) => {
-    let node = document.createElement('span');
-    let template = document.getElementById(templateName);
-    let content = template.content ? template.content : template;
+  const loadTemplate = (templateName) => {
+    const node = document.createElement('span');
+    const template = document.getElementById(templateName);
+    const content = template.content ? template.content : template;
     node.appendChild(content);
     return node.cloneNode(true);
   };
 
 
   // Rules
-  let rulesElement = loadTemplate('rules');
-  let rulesSubmit = rulesElement.querySelector('.rules__button');
+  const rulesElement = loadTemplate('rules');
+  const rulesSubmit = rulesElement.querySelector('.rules__button');
 
   rulesElement.querySelector('.rules__input').oninput = (e) => {
     if (e.value) {
@@ -23,16 +23,16 @@
 
   // Slides changer
 
-  let mainElement = document.getElementById('main');
+  const mainElement = document.getElementById('main');
 
-  let switcher = document.createElement('div');
+  const switcher = document.createElement('div');
   switcher.innerHTML = '' +
     '<span class="prev"><img src="img/arrow_left.svg" alt="Left" width="50" height="50"></span>   ' +
     '<span class="next"><img src="img/arrow_right.svg" alt="Right" width="50" height="50"></span>';
   switcher.style.cssText = 'text-align: center';
   mainElement.after(switcher);
 
-  let slides = [
+  const slides = [
     loadTemplate('intro'),
     loadTemplate('greeting'),
     rulesElement,
@@ -43,7 +43,7 @@
   ];
   let current = -1;
 
-  let select = (index) => {
+  const select = (index) => {
     current = index;
     mainElement.innerHTML = '';
     mainElement.appendChild(slides[index]);
