@@ -11,6 +11,8 @@ const mqpacker = require('css-mqpacker');
 const minify = require('gulp-csso');
 const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
+const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('style', function () {
   gulp.src('sass/style.scss')
@@ -38,6 +40,9 @@ gulp.task('style', function () {
 gulp.task('scripts', function () {
   return gulp.src('js/**/*.js')
     .pipe(plumber())
+    .pipe(sourcemaps.init())
+    .pipe(babel())
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('build/js/'));
 });
 
@@ -72,7 +77,7 @@ gulp.task('clean', function () {
   return del('build');
 });
 
-gulp.task('serve', ['assemble'], function () {
+gulp.task('serve', /*['assemble'],*/ function () {
   server.init({
     server: './build',
     notify: false,
@@ -85,9 +90,11 @@ gulp.task('serve', ['assemble'], function () {
   gulp.watch('*.html', ['copy-html']);
   gulp.watch('js/**/*.js', ['scripts']).on('change', server.reload);
 });
+/*
 
 gulp.task('assemble', ['clean'], function () {
   gulp.start('copy', 'style');
 });
+*/
 
-gulp.task('build', ['assemble', 'imagemin']);
+gulp.task('build', [/*'assemble',*/ 'imagemin']);
