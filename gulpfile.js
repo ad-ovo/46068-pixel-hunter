@@ -72,6 +72,10 @@ gulp.task('images', function () {
     .pipe(gulp.dest('build/img'));
 });
 
+gulp.task('symbols', function() {
+  return gulp.src('img/*.svg')
+    .pipe(gulp.dest('build/img'))
+});
 
 gulp.task('copy-html', function () {
   return gulp.src('*.html')
@@ -79,7 +83,7 @@ gulp.task('copy-html', function () {
     .pipe(server.stream());
 });
 
-gulp.task('copy', ['copy-html', 'images', 'scripts', 'style'], function () {
+gulp.task('copy', ['copy-html', 'images', 'symbols', 'scripts', 'style'], function () {
   return gulp.src([
     'fonts/**/*.{woff,woff2}',
     'img/*.*'
