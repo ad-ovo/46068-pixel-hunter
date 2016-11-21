@@ -1,19 +1,17 @@
+import intro from './templates/intro';
+import greeting from './templates/greeting';
+import rules from './templates/rules';
+import game1 from './templates/game-1';
+import game2 from './templates/game-2';
+import game3 from './templates/game-3';
+import stats from './templates/stats';
+
 (() => {
 
-  const loadTemplate = (templateName) => {
-    const node = document.createElement('span');
-    const template = document.getElementById(templateName);
-    const content = template.content ? template.content : template;
-    node.appendChild(content);
-    return node.cloneNode(true);
-  };
+// Rules
+  const rulesSubmit = rules.querySelector('.rules__button');
 
-
-  // Rules
-  const rulesElement = loadTemplate('rules');
-  const rulesSubmit = rulesElement.querySelector('.rules__button');
-
-  rulesElement.querySelector('.rules__input').oninput = (e) => {
+  rules.querySelector('.rules__input').oninput = (e) => {
     if (e.target.value) {
       rulesSubmit.removeAttribute('disabled');
     } else {
@@ -21,10 +19,9 @@
     }
   };
 
-  // Slides changer
+// Slides changer
 
   const mainElement = document.getElementById('main');
-
   const switcher = document.createElement('div');
   switcher.innerHTML = '' +
     '<span class="prev"><img src="img/arrow_left.svg" alt="Left" width="50" height="50"></span>   ' +
@@ -33,13 +30,13 @@
   mainElement.after(switcher);
 
   const slides = [
-    loadTemplate('intro'),
-    loadTemplate('greeting'),
-    rulesElement,
-    loadTemplate('game-1'),
-    loadTemplate('game-2'),
-    loadTemplate('game-3'),
-    loadTemplate('stats')
+    intro,
+    greeting,
+    rules,
+    game1,
+    game2,
+    game3,
+    stats
   ];
   let current = -1;
 
@@ -63,3 +60,4 @@
 
   select(0);
 })();
+

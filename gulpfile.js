@@ -13,6 +13,8 @@ const rename = require('gulp-rename');
 const imagemin = require('gulp-imagemin');
 const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
+const webpack = require('gulp-webpack');
+const babelLoader = require('babel-loader');
 
 gulp.task('style', function () {
   gulp.src('sass/style.scss')
@@ -38,19 +40,31 @@ gulp.task('style', function () {
 });
 
 gulp.task('scripts', function () {
-  return gulp.src('js/**/*.js')
+  return gulp.src('js/main.js')
     .pipe(plumber())
-    .pipe(sourcemaps.init())
-    .pipe(babel())
-    .pipe(sourcemaps.write('.'))
+    .pipe(webpack({
+      watch: true,
+      output: {
+        filename: 'main.js'
+      },
+      module: {
+        loaders: [
+          {
+            test: /\.js$/,
+            loader: 'babel-loader'
+          },
+        ],
+      },
+      devtool: 'source-map'
+    }))
     .pipe(gulp.dest('build/js/'));
 });
 
 gulp.task('test', function () {
 });
 
-gulp.task('imagemin', ['copy'], function () {
-  return gulp.src('build/img/**/*.{jpg,png,gif}')
+gulp.task('images', function () {
+  return gulp.src('img/**/*.{jpg,png,gif}')
     .pipe(imagemin([
       imagemin.optipng({optimizationLevel: 3}),
       imagemin.jpegtran({progressive: true})
@@ -58,6 +72,10 @@ gulp.task('imagemin', ['copy'], function () {
     .pipe(gulp.dest('build/img'));
 });
 
+gulp.task('symbols', function() {
+  return gulp.src('img/*.svg')
+    .pipe(gulp.dest('build/img'))
+});
 
 gulp.task('copy-html', function () {
   return gulp.src('*.html')
@@ -65,7 +83,7 @@ gulp.task('copy-html', function () {
     .pipe(server.stream());
 });
 
-gulp.task('copy', ['copy-html', 'scripts', 'style'], function () {
+gulp.task('copy', ['copy-html', 'images', 'symbols', 'scripts', 'style'], function () {
   return gulp.src([
     'fonts/**/*.{woff,woff2}',
     'img/*.*'
@@ -97,4 +115,5 @@ gulp.task('assemble', ['clean'], function () {
 });
 */
 
-gulp.task('build', [/*'assemble',*/ 'imagemin']);
+
+gulp.task('build', [/*'assemble',*/ 'copy']);
