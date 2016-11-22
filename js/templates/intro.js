@@ -10,8 +10,9 @@ const templateContent =
     </div>`;
 
 const templateElement = getElementFromTemplate(templateContent);
+const button = templateElement.querySelector('.intro__asterisk');
 
-templateElement.querySelector('.intro__asterisk').onclick = (e) => {
+button.onclick = (e) => {
   e.preventDefault();
 
   renderSlide(greeting);
