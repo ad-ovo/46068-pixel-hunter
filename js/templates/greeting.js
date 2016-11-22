@@ -1,4 +1,6 @@
 import getElementFromTemplate from './create-element';
+import renderSlide from './render-slide';
+import rules from './rules';
 
 const templateContent =
   `<div class="greeting  central--blur">
@@ -16,4 +18,14 @@ const templateContent =
   </div>`;
 
 const templateElement = getElementFromTemplate(templateContent);
+const button = templateElement.querySelector('.greeting__continue');
+
+button.onclick = (e) => {
+  e.preventDefault();
+
+  renderSlide(rules);
+};
+
 export default templateElement;
+
+// Экран правил игры, блок #rules, должен показываться по нажатию на блок со стрелкой вправо, элемент .greeting__continue на экране приветствия.

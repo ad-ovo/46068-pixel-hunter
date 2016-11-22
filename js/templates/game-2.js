@@ -1,4 +1,6 @@
 import getElementFromTemplate from './create-element';
+import renderSlide from './render-slide';
+import game3 from './game-3';
 
 const templateContent =
   `<header class="header">
@@ -47,4 +49,17 @@ const templateContent =
   </div>`;
 
 const templateElement = getElementFromTemplate(templateContent);
+
+const gameAnswers = templateElement.querySelectorAll('.game__answer');
+
+for (let i = 0; i < gameAnswers.length; i++) {
+  gameAnswers[i].onclick = (e) => {
+    e.preventDefault();
+
+    renderSlide(game3);
+  };
+}
+
 export default templateElement;
+
+// Экран третьей игры, блок #game-3, должен показываться по нажатию на любой ответ на втором игровом экране, любой блок .game__answer.

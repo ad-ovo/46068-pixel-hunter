@@ -1,4 +1,6 @@
 import getElementFromTemplate from './create-element';
+import renderSlide from './render-slide';
+import stats from './stats';
 
 const templateContent =
   `<header class="header">
@@ -45,4 +47,17 @@ const templateContent =
   </div>`;
 
 const templateElement = getElementFromTemplate(templateContent);
+
+const gameAnswers = templateElement.querySelectorAll('.game__option');
+
+for (let i = 0; i < gameAnswers.length; i++) {
+  gameAnswers[i].onclick = (e) => {
+    e.preventDefault();
+
+    renderSlide(stats);
+  };
+}
+
 export default templateElement;
+
+// Экран с результатами, блок #stats, должен показываться по нажатию на любой ответ на третьем игровом экране, любой блок .game__option.
