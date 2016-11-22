@@ -60,4 +60,3 @@ for (let i = 0; i < gameAnswers.length; i++) {
 
 export default templateElement;
 
-// Экран с результатами, блок #stats, должен показываться по нажатию на любой ответ на третьем игровом экране, любой блок .game__option.

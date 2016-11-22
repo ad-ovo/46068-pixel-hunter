@@ -19,4 +19,3 @@ templateElement.querySelector('.intro__asterisk').onclick = (e) => {
 
 export default templateElement;
 
-// Экран приветствия, блок #greeting, должен показываться по нажатию на символ звездочки, элемент .intro__asterisk на главном экране.

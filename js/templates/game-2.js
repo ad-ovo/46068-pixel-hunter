@@ -61,5 +61,3 @@ for (let i = 0; i < gameAnswers.length; i++) {
 }
 
 export default templateElement;
-
-// Экран третьей игры, блок #game-3, должен показываться по нажатию на любой ответ на втором игровом экране, любой блок .game__answer.

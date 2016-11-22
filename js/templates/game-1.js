@@ -80,5 +80,3 @@ for (let i = 0; i < gameAnswers.length; i++) {
 }*/
 
 export default templateElement;
-
-// Экран второй игры, блок #game-2, должен показываться по нажатию на любой ответ на первом игровом экране, любой блок .game__answer.

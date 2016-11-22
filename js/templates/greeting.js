@@ -28,4 +28,3 @@ button.onclick = (e) => {
 
 export default templateElement;
 
-// Экран правил игры, блок #rules, должен показываться по нажатию на блок со стрелкой вправо, элемент .greeting__continue на экране приветствия.
