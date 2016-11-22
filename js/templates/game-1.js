@@ -71,12 +71,12 @@ for (let i = 0; i < gameAnswers.length; i++) {
   };
 }
 
-/*for (const i of gameAnswers) {
+/* for (const i of gameAnswers) {
   gameAnswers[i].onclick = (e) => {
     e.preventDefault();
 
     renderSlide(game2);
   };
-}*/
+} */
 
 export default templateElement;
