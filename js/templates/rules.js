@@ -1,4 +1,6 @@
 import getElementFromTemplate from './create-element';
+import renderSlide from './render-slide';
+import game1 from './game-1';
 
 const templateContent =
   `<header class="header">
@@ -27,4 +29,23 @@ const templateContent =
   </div>`;
 
 const templateElement = getElementFromTemplate(templateContent);
+
+const rulesSubmit = templateElement.querySelector('.rules__button');
+const rulesInput = templateElement.querySelector('.rules__input');
+
+rulesInput.oninput = (e) => {
+  if (e.target.value) {
+    rulesSubmit.removeAttribute('disabled');
+  } else {
+    rulesSubmit.setAttribute('disabled', '');
+  }
+};
+
+rulesSubmit.onclick = (e) => {
+  e.preventDefault();
+
+  renderSlide(game1);
+};
+
 export default templateElement;
+

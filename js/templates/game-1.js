@@ -1,4 +1,6 @@
 import getElementFromTemplate from './create-element';
+import renderSlide from './render-slide';
+import game2 from './game-2';
 
 const templateContent =
   `<header class="header">
@@ -58,4 +60,23 @@ const templateContent =
   </div>`;
 
 const templateElement = getElementFromTemplate(templateContent);
+
+const gameAnswers = templateElement.querySelectorAll('.game__answer');
+
+for (let i = 0; i < gameAnswers.length; i++) {
+  gameAnswers[i].onclick = (e) => {
+    e.preventDefault();
+
+    renderSlide(game2);
+  };
+}
+
+/* for (const i of gameAnswers) {
+  gameAnswers[i].onclick = (e) => {
+    e.preventDefault();
+
+    renderSlide(game2);
+  };
+} */
+
 export default templateElement;

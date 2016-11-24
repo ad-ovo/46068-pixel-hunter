@@ -1,4 +1,6 @@
 import getElementFromTemplate from './create-element';
+import renderSlide from './render-slide';
+import greeting from './greeting';
 
 const templateContent =
   `<div id="intro" class="intro">
@@ -8,4 +10,13 @@ const templateContent =
     </div>`;
 
 const templateElement = getElementFromTemplate(templateContent);
+const button = templateElement.querySelector('.intro__asterisk');
+
+button.onclick = (e) => {
+  e.preventDefault();
+
+  renderSlide(greeting);
+};
+
 export default templateElement;
+
