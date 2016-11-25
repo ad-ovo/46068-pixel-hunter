@@ -1,6 +1,17 @@
 import getElementFromTemplate from './create-element';
 
 const result = {
+  header: {
+    back: {
+      arrow: {
+        src: 'img/arrow_left.svg',
+        alt: 'Back'
+      },
+      logo: {
+        src: 'img/logo_small.png'
+      }
+    }
+  },
   title: 'Победа!',
   output1: {
     number: '1.',
@@ -50,16 +61,21 @@ const result = {
   }
 };
 
-const templateContent =
-  `<header class="header">
+const templateHeader = {
+  header:
+    `<header class="header">
     <div class="header__back">
       <span class="back">
-        <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-        <img src="img/logo_small.png" width="101" height="44">
+        <img src="${result.header.back.arrow.src}" width="45" height="45" alt="${result.header.back.arrow.alt}">
+        <img src="${result.header.back.logo.src}" width="101" height="44">
       </span>
     </div>
-  </header>
-  <div class="result">
+  </header>`
+};
+
+const templateContent = {
+  content :
+  `<div class="result">
     <h1>${result.title}</h1>
     <table class="result__table">
       <tr>
@@ -158,7 +174,12 @@ const templateContent =
         <td colspan="5" class="result__total  result__total--final">${result.output3.final.value}</td>
       </tr>
     </table>
-  </div>`;
+  </div>`
+};
 
-const templateElement = getElementFromTemplate(templateContent);
+const template =
+  `${templateHeader.header}
+   ${templateContent.content}`;
+
+const templateElement = getElementFromTemplate(template);
 export default templateElement;
