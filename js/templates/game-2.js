@@ -52,8 +52,16 @@ const templateElement = getElementFromTemplate(templateContent);
 
 const gameAnswers = templateElement.querySelectorAll('.game__answer');
 
-for (let i = 0; i < gameAnswers.length; i++) {
+/* for (let i = 0; i < gameAnswers.length; i++) {
   gameAnswers[i].onclick = (e) => {
+    e.preventDefault();
+
+    renderSlide(game3);
+  };
+} */
+
+for (const i of gameAnswers) {
+  i.onclick = (e) => {
     e.preventDefault();
 
     renderSlide(game3);
