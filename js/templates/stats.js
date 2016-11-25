@@ -74,7 +74,7 @@ const templateHeader = {
 };
 
 const templateContent = {
-  content :
+  content:
   `<div class="result">
     <h1>${result.title}</h1>
     <table class="result__table">
