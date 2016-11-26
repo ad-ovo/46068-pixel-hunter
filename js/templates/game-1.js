@@ -2,48 +2,85 @@ import getElementFromTemplate from './create-element';
 import renderSlide from './render-slide';
 import game2 from './game-2';
 
-const templateContent =
-  `<header class="header">
-    <div class="header__back">
-      <span class="back">
-        <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-        <img src="img/logo_small.png" width="101" height="44">
-      </span>
-    </div>
-    <h1 class="game__timer">NN</h1>
-    <div class="game__lives">
-      <img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
-    </div>
-  </header>
-  <div class="game">
-    <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
-    <form class="game__content">
-      <div class="game__option">
-        <img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">
-        <label class="game__answer game__answer--photo">
-          <input name="question1" type="radio" value="photo">
-          <span>Фото</span>
-        </label>
-        <label class="game__answer game__answer--paint">
-          <input name="question1" type="radio" value="paint">
-          <span>Рисунок</span>
-        </label>
+const game1 = {
+  header: {
+    back: {
+      arrow: {
+        src: 'img/arrow_left.svg',
+        alt: 'Back'
+      },
+      logo: {
+        src: 'img/logo_small.png'
+      }
+    }
+  },
+  timer: 'NN',
+  lives: {
+    full: {
+      src: 'img/heart__full.svg',
+      alt: 'Life'
+    },
+    empty: {
+      src: 'img/heart__empty.svg',
+      alt: 'Life'
+    }
+  },
+  task: 'Угадайте для каждого изображения фото или рисунок?',
+  option1: {
+    image: {
+      src: 'http://placehold.it/468x458',
+      alt: 'Option 1'
+    }
+  },
+  option2: {
+    image: {
+      src: 'http://placehold.it/468x458',
+      alt: 'Option 2'
+    }
+  },
+  question1: {
+    photo: {
+      value: 'photo',
+      text: 'Фото'
+    },
+    paint: {
+      value: 'paint',
+      text: 'Рисунок'
+    }
+  },
+  question2: {
+    photo: {
+      value: 'photo',
+      text: 'Фото'
+    },
+    paint: {
+      value: 'paint',
+      text: 'Рисунок'
+    }
+  }
+};
+
+const templateHeader = {
+  header:
+    `<header class="header">
+      <div class="header__back">
+        <span class="back">
+          <img src="${game1.header.back.arrow.src}" width="45" height="45" alt="${game1.header.back.arrow.alt}">
+          <img src="${game1.header.back.logo.src}" width="101" height="44">
+        </span>
       </div>
-      <div class="game__option">
-        <img src="http://placehold.it/468x458" alt="Option 2" width="468" height="458">
-        <label class="game__answer  game__answer--photo">
-          <input name="question2" type="radio" value="photo">
-          <span>Фото</span>
-        </label>
-        <label class="game__answer  game__answer--paint">
-          <input name="question2" type="radio" value="paint">
-          <span>Рисунок</span>
-        </label>
+      <h1 class="game__timer">${game1.timer}</h1>
+      <div class="game__lives">
+        <img src="${game1.lives.empty.src}" class="game__heart" alt="${game1.lives.empty.alt}" width="32" height="32">
+        <img src="${game1.lives.full.src}" class="game__heart" alt="${game1.lives.full.alt}" width="32" height="32">
+        <img src="${game1.lives.full.src}" class="game__heart" alt="${game1.lives.full.alt}" width="32" height="32">
       </div>
-    </form>
-    <div class="stats">
+    </header>`
+};
+
+const templateStats = {
+  stats:
+    `<div class="stats">
       <ul class="stats">
         <li class="stats__result stats__result--wrong"></li>
         <li class="stats__result stats__result--slow"></li>
@@ -56,27 +93,55 @@ const templateContent =
         <li class="stats__result stats__result--unknown"></li>
         <li class="stats__result stats__result--unknown"></li>
       </ul>
-    </div>
-  </div>`;
+    </div>`
+};
 
-const templateElement = getElementFromTemplate(templateContent);
+const templateContent = {
+  content:
+  `<div class="game">
+    <p class="game__task">${game1.task}</p>
+    <form class="game__content">
+      <div class="game__option">
+        <img src="${game1.option1.image.src}" alt="${game1.option1.image.alt}" width="468" height="458">
+        <label class="game__answer game__answer--photo">
+          <input name="question1" type="radio" value="${game1.question1.photo.alt}">
+          <span>${game1.question1.photo.text}</span>
+        </label>
+        <label class="game__answer game__answer--paint">
+          <input name="question1" type="radio" value="${game1.question1.paint.alt}">
+          <span>${game1.question1.photo.text}</span>
+        </label>
+      </div>
+      <div class="game__option">
+        <img src="${game1.option2.image.src}" alt="${game1.option2.image.alt}" width="468" height="458">
+        <label class="game__answer  game__answer--photo">
+          <input name="question2" type="radio" value="${game1.question2.paint.alt}">
+          <span>${game1.question2.paint.text}</span>
+        </label>
+        <label class="game__answer  game__answer--paint">
+          <input name="question2" type="radio" value="${game1.question2.paint.alt}">
+          <span>${game1.question2.paint.text}</span>
+        </label>
+      </div>
+    </form>
+    ${templateStats.stats}
+  </div>`
+};
+
+const template =
+  `${templateHeader.header}
+   ${templateContent.content}`;
+
+const templateElement = getElementFromTemplate(template);
 
 const gameAnswers = templateElement.querySelectorAll('.game__answer');
 
-for (let i = 0; i < gameAnswers.length; i++) {
-  gameAnswers[i].onclick = (e) => {
+for (const i of gameAnswers) {
+  i.onclick = (e) => {
     e.preventDefault();
 
     renderSlide(game2);
   };
 }
-
-/* for (const i of gameAnswers) {
-  gameAnswers[i].onclick = (e) => {
-    e.preventDefault();
-
-    renderSlide(game2);
-  };
-} */
 
 export default templateElement;
