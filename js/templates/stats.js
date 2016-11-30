@@ -1,69 +1,69 @@
 import getElementFromTemplate from './create-element';
 
-const result = {
-  header: {
-    back: {
-      arrow: {
-        src: 'img/arrow_left.svg',
-        alt: 'Back'
+export default () => {
+  const result = {
+    header: {
+      back: {
+        arrow: {
+          src: 'img/arrow_left.svg',
+          alt: 'Back'
+        },
+        logo: {
+          src: 'img/logo_small.png'
+        }
+      }
+    },
+    title: 'Победа!',
+    output1: {
+      number: '1.',
+      points: '100',
+      total: '900',
+      extra1: {
+        title: 'Бонус за скорость:',
+        quantity: '1',
+        points: '50',
+        total: '50'
       },
-      logo: {
-        src: 'img/logo_small.png'
+      extra2: {
+        title: 'Бонус за жизни:',
+        quantity: '2',
+        points: '50',
+        total: '100'
+      },
+      extra3: {
+        title: 'Штраф за медлительность:',
+        quantity: '2',
+        points: '50',
+        total: '-100'
+      },
+      final: {
+        value: '950'
+      }
+    },
+    output2: {
+      number: '2.',
+      final: {
+        value: 'fail'
+      }
+    },
+    output3: {
+      number: '3.',
+      points: '100',
+      total: '900',
+      extra2: {
+        title: 'Бонус за жизни:',
+        quantity: '2',
+        points: '50',
+        total: '100'
+      },
+      final: {
+        value: '950'
       }
     }
-  },
-  title: 'Победа!',
-  output1: {
-    number: '1.',
-    points: '100',
-    total: '900',
-    extra1: {
-      title: 'Бонус за скорость:',
-      quantity: '1',
-      points: '50',
-      total: '50'
-    },
-    extra2: {
-      title: 'Бонус за жизни:',
-      quantity: '2',
-      points: '50',
-      total: '100'
-    },
-    extra3: {
-      title: 'Штраф за медлительность:',
-      quantity: '2',
-      points: '50',
-      total: '-100'
-    },
-    final: {
-      value: '950'
-    }
-  },
-  output2: {
-    number: '2.',
-    final: {
-      value: 'fail'
-    }
-  },
-  output3: {
-    number: '3.',
-    points: '100',
-    total: '900',
-    extra2: {
-      title: 'Бонус за жизни:',
-      quantity: '2',
-      points: '50',
-      total: '100'
-    },
-    final: {
-      value: '950'
-    }
-  }
-};
+  };
 
-const templateHeader = {
-  header:
-    `<header class="header">
+  const templateHeader = {
+    header: `<header class="header">
     <div class="header__back">
       <span class="back">
         <img src="${result.header.back.arrow.src}" width="45" height="45" alt="${result.header.back.arrow.alt}">
@@ -71,11 +71,10 @@ const templateHeader = {
       </span>
     </div>
   </header>`
-};
+  };
 
-const templateContent = {
-  content:
-  `<div class="result">
+  const templateContent = {
+    content: `<div class="result">
     <h1>${result.title}</h1>
     <table class="result__table">
       <tr>
@@ -175,11 +174,13 @@ const templateContent = {
       </tr>
     </table>
   </div>`
-};
+  };
 
-const template =
-  `${templateHeader.header}
+  const template =
+    `${templateHeader.header}
    ${templateContent.content}`;
 
-const templateElement = getElementFromTemplate(template);
-export default templateElement;
+  const templateElement = getElementFromTemplate(template);
+
+  return templateElement;
+};

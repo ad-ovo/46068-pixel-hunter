@@ -2,67 +2,67 @@ import getElementFromTemplate from './create-element';
 import renderSlide from './render-slide';
 import game2 from './game-2';
 
-const game1 = {
-  header: {
-    back: {
-      arrow: {
-        src: 'img/arrow_left.svg',
-        alt: 'Back'
+export default () => {
+  const game1 = {
+    header: {
+      back: {
+        arrow: {
+          src: 'img/arrow_left.svg',
+          alt: 'Back'
+        },
+        logo: {
+          src: 'img/logo_small.png'
+        }
+      }
+    },
+    timer: 'NN',
+    lives: {
+      full: {
+        src: 'img/heart__full.svg',
+        alt: 'Life'
       },
-      logo: {
-        src: 'img/logo_small.png'
+      empty: {
+        src: 'img/heart__empty.svg',
+        alt: 'Life'
+      }
+    },
+    task: 'Угадайте для каждого изображения фото или рисунок?',
+    option1: {
+      image: {
+        src: 'http://placehold.it/468x458',
+        alt: 'Option 1'
+      }
+    },
+    option2: {
+      image: {
+        src: 'http://placehold.it/468x458',
+        alt: 'Option 2'
+      }
+    },
+    question1: {
+      photo: {
+        value: 'photo',
+        text: 'Фото'
+      },
+      paint: {
+        value: 'paint',
+        text: 'Рисунок'
+      }
+    },
+    question2: {
+      photo: {
+        value: 'photo',
+        text: 'Фото'
+      },
+      paint: {
+        value: 'paint',
+        text: 'Рисунок'
       }
     }
-  },
-  timer: 'NN',
-  lives: {
-    full: {
-      src: 'img/heart__full.svg',
-      alt: 'Life'
-    },
-    empty: {
-      src: 'img/heart__empty.svg',
-      alt: 'Life'
-    }
-  },
-  task: 'Угадайте для каждого изображения фото или рисунок?',
-  option1: {
-    image: {
-      src: 'http://placehold.it/468x458',
-      alt: 'Option 1'
-    }
-  },
-  option2: {
-    image: {
-      src: 'http://placehold.it/468x458',
-      alt: 'Option 2'
-    }
-  },
-  question1: {
-    photo: {
-      value: 'photo',
-      text: 'Фото'
-    },
-    paint: {
-      value: 'paint',
-      text: 'Рисунок'
-    }
-  },
-  question2: {
-    photo: {
-      value: 'photo',
-      text: 'Фото'
-    },
-    paint: {
-      value: 'paint',
-      text: 'Рисунок'
-    }
-  }
-};
+  };
 
-const templateHeader = {
-  header:
-    `<header class="header">
+  const templateHeader = {
+    header: `<header class="header">
       <div class="header__back">
         <span class="back">
           <img src="${game1.header.back.arrow.src}" width="45" height="45" alt="${game1.header.back.arrow.alt}">
@@ -76,11 +76,10 @@ const templateHeader = {
         <img src="${game1.lives.full.src}" class="game__heart" alt="${game1.lives.full.alt}" width="32" height="32">
       </div>
     </header>`
-};
+  };
 
-const templateStats = {
-  stats:
-    `<div class="stats">
+  const templateStats = {
+    stats: `<div class="stats">
       <ul class="stats">
         <li class="stats__result stats__result--wrong"></li>
         <li class="stats__result stats__result--slow"></li>
@@ -94,11 +93,10 @@ const templateStats = {
         <li class="stats__result stats__result--unknown"></li>
       </ul>
     </div>`
-};
+  };
 
-const templateContent = {
-  content:
-  `<div class="game">
+  const templateContent = {
+    content: `<div class="game">
     <p class="game__task">${game1.task}</p>
     <form class="game__content">
       <div class="game__option">
@@ -126,22 +124,23 @@ const templateContent = {
     </form>
     ${templateStats.stats}
   </div>`
-};
+  };
 
-const template =
-  `${templateHeader.header}
+  const template =
+    `${templateHeader.header}
    ${templateContent.content}`;
 
-const templateElement = getElementFromTemplate(template);
+  const templateElement = getElementFromTemplate(template);
 
-const gameAnswers = templateElement.querySelectorAll('.game__answer');
+  const gameAnswers = templateElement.querySelectorAll('.game__answer');
 
-for (const i of gameAnswers) {
-  i.onclick = (e) => {
-    e.preventDefault();
+  for (const i of gameAnswers) {
+    i.onclick = (e) => {
+      e.preventDefault();
 
-    renderSlide(game2);
-  };
-}
+      renderSlide(game2());
+    };
+  }
 
-export default templateElement;
+  return templateElement;
+};
