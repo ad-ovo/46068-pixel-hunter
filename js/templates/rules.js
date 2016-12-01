@@ -70,7 +70,7 @@ export default () => {
   rulesSubmit.onclick = (e) => {
     e.preventDefault();
 
-    renderSlide(game1());
+    renderSlide(game1({}));
   };
 
   return templateElement;
