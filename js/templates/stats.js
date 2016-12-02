@@ -3,42 +3,18 @@ import goBack from './common/go-back';
 import gameStats from './common/game-stats';
 
 export default () => {
-  const result = {
-    output1: {
-      number: '1.',
-      points: '100',
-      total: '900',
-      final: {
-        value: '950'
-      }
-    },
-    output2: {
-      number: '2.',
-      final: {
-        value: 'fail'
-      }
-    },
-    output3: {
-      number: '3.',
-      points: '100',
-      total: '900',
-      final: {
-        value: '950'
-      }
-    }
-  };
 
   const templateContent = {
     content: `<div class="result">
     <h1>Победа!</h1>
     <table class="result__table">
       <tr>
-        <td class="result__number">${result.output1.number}</td>
+        <td class="result__number">1.</td>
         <td colspan="2">
           ${gameStats()}
         </td>
-        <td class="result__points">${result.output1.points}</td>
-        <td class="result__total">${result.output1.total}</td>
+        <td class="result__points">100</td>
+        <td class="result__total">900</td>
       </tr>
       <tr>
         <td></td>
@@ -62,27 +38,27 @@ export default () => {
         <td class="result__total">-100</td>
       </tr>
       <tr>
-        <td colspan="5" class="result__total  result__total--final">${result.output1.final.value}</td>
+        <td colspan="5" class="result__total  result__total--final">900</td>
       </tr>
     </table>
     <table class="result__table">
       <tr>
-        <td class="result__number">${result.output2.number}</td>
+        <td class="result__number">2.</td>
         <td>
           ${gameStats()}
         </td>
         <td class="result__total"></td>
-        <td class="result__total  result__total--final">${result.output2.final.value}</td>
+        <td class="result__total  result__total--final">fail</td>
       </tr>
     </table>
     <table class="result__table">
       <tr>
-        <td class="result__number">${result.output3.number}</td>
+        <td class="result__number">3.</td>
         <td colspan="2">
           ${gameStats()}
         </td>
-        <td class="result__points">×&nbsp;${result.output3.points}</td>
-        <td class="result__total">${result.output3.total}</td>
+        <td class="result__points">×&nbsp;100</td>
+        <td class="result__total">900</td>
       </tr>
       <tr>
         <td></td>
@@ -92,7 +68,7 @@ export default () => {
         <td class="result__total">100</td>
       </tr>
       <tr>
-        <td colspan="5" class="result__total  result__total--final">${result.output3.final.value}</td>
+        <td colspan="5" class="result__total  result__total--final">950</td>
       </tr>
     </table>
   </div>`
