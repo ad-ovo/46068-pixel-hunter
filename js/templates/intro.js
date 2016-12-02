@@ -1,7 +1,6 @@
 import getElementFromTemplate from './create-element';
 import renderSlide from './render-slide';
 import greeting from './greeting';
-/*import data from '../data';*/
 
 export default () => {
   const templateContent =

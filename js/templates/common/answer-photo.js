@@ -3,4 +3,4 @@ export default () => {
           <input name="question1" type="radio" value="photo">
           <span>Фото</span>
         </label>`;
-}
+};
