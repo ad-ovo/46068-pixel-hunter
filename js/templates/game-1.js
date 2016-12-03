@@ -37,15 +37,15 @@ export default (data) => {
 
   const templateElement = getElementFromTemplate(template);
 
-  const gameAnswers = templateElement.querySelectorAll('.game__answer');
+/*  const gameAnswers = templateElement.querySelectorAll('.game__answer');
 
   for (const i of gameAnswers) {
     i.onclick = (e) => {
       e.preventDefault();
 
-      renderSlide(game2());
+      renderSlide(game2({}));
     };
-  }
+  }*/
 
   return templateElement;
 };

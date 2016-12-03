@@ -2,6 +2,7 @@ import getElementFromTemplate from './create-element';
 import renderSlide from './render-slide';
 import game1 from './game-1';
 import goBack from './common/go-back';
+/* import data*/
 
 export default () => {
 
@@ -23,7 +24,9 @@ export default () => {
   };
 
   const template =
-    `${goBack()}
+    `<header class="header">
+       ${goBack()}
+     </header>
      ${templateContent.content}`;
 
 

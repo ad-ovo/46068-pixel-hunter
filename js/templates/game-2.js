@@ -13,7 +13,7 @@ export default (data) => {
     content: `<div class="game">
     <p class="game__task">Угадай, фото или рисунок?</p>
     <form class="game__content  game__content--wide">
-      <div class="game__option">
+      <div class="game__option  js-answer">
         <img src="${option1Src}" width="705" height="455">
         ${answerPhoto()}
         ${answerPaint()}
@@ -31,15 +31,15 @@ export default (data) => {
 
   const templateElement = getElementFromTemplate(template);
 
-  const gameAnswers = templateElement.querySelectorAll('.game__answer');
+  /*const gameAnswers = templateElement.querySelectorAll('.game__answer');*/
 
-  for (const i of gameAnswers) {
+/*  for (const i of gameAnswers) {
     i.onclick = (e) => {
       e.preventDefault();
 
-      renderSlide(game3());
+      renderSlide(game3({}));
     };
-  }
+  }*/
 
   return templateElement;
 };

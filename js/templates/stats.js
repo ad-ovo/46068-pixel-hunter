@@ -75,7 +75,9 @@ export default () => {
   };
 
   const template =
-    `${goBack()}
+    `<header class="header">
+       ${goBack()}
+     </header>
      ${templateContent.content}`;
 
   const templateElement = getElementFromTemplate(template);
