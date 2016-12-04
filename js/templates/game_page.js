@@ -9,12 +9,12 @@ import renderSlide from './render-slide';
 import stats from './stats';
 
 export default () => {
-  let current_game_index = 0;
-  let current_game = data.questions[current_game_index];
+  let currentGameIndex = 0;
+  let currentGame = data.questions[currentGameIndex];
 
   const gameContent = `<div class="game">
-    <div id="game__content__element">
-      ${getGameTemplate(current_game.gameScreen, current_game.imageSrc)}
+    <div id="game__element">
+      ${getGameTemplate(currentGame.gameScreen, currentGame.imageSrc)}
     </div>
     <div class="stats">
       ${gameStats()}
@@ -34,16 +34,14 @@ export default () => {
     while (target !== templateElement) {
       if (target.matches('.js-answer')) {
 
-        if(current_game_index < data.questions.length) {
-          current_game_index++;
+        if (currentGameIndex < data.questions.length - 1) {
+          currentGameIndex++;
 
-          current_game = data.questions[current_game_index];
+          currentGame = data.questions[currentGameIndex];
+          const gameElement = templateElement.querySelector('#game__element');
+          gameElement.innerHTML = getGameTemplate(currentGame.gameScreen, currentGame.imageSrc);
 
-          const gameContentElement = templateElement.querySelector('#game__content__element');
-
-          gameContentElement.innerHTML = getGameTemplate(current_game.gameScreen, current_game.imageSrc);
-
-          break;
+          return;
         } else {
           renderSlide(stats());
         }
@@ -56,13 +54,20 @@ export default () => {
   return templateElement;
 };
 
-function getGameTemplate(gameScreen, data) {
+function getGameTemplate(gameScreen, ...args) {
+  let currentGameScreen;
+
   switch (gameScreen) {
     case 'game-1':
-      return game1(data);
+      currentGameScreen = game1(...args);
+      break;
     case 'game-2':
-      return game2(data);
+      currentGameScreen = game2(...args);
+      break;
     case 'game-3':
-      return game3(data);
+      currentGameScreen = game3(...args);
+      break;
   }
+
+  return currentGameScreen;
 }

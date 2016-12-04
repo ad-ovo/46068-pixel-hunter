@@ -1,7 +1,7 @@
 import getElementFromTemplate from './create-element';
 import renderSlide from './render-slide';
 import goBack from './common/go-back';
-import GamePage from './game_page';
+import gamePage from './game_page';
 
 export default () => {
 
@@ -45,7 +45,7 @@ export default () => {
   rulesSubmit.onclick = (e) => {
     e.preventDefault();
 
-    renderSlide(GamePage());
+    renderSlide(gamePage());
   };
 
   return templateElement;
