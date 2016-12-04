@@ -12,4 +12,3 @@ export default (data) => {
       </div>
     </form>`;
 };
-

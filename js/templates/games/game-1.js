@@ -1,5 +1,5 @@
-import answerPaint from './common/answer-paint';
-import answerPhoto from './common/answer-photo';
+import answerPaint from '../common/answer-paint';
+import answerPhoto from '../common/answer-photo';
 
 export default (data) => {
   return `<p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
