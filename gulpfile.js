@@ -15,6 +15,8 @@ const babel = require('gulp-babel');
 const sourcemaps = require('gulp-sourcemaps');
 const webpack = require('gulp-webpack');
 const babelLoader = require('babel-loader');
+const mocha = require('gulp-mocha');
+const register = require('babel-register');
 
 gulp.task('style', function () {
   gulp.src('sass/style.scss')
@@ -61,6 +63,14 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('test', function () {
+  return gulp
+    .src(['js/**/*.test.js'], {read: false})
+    .pipe(mocha({
+      compilers: {
+        js: 'babel-register'
+      },
+      reporter: 'nyan'
+    }))
 });
 
 gulp.task('images', function () {
